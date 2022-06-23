@@ -1,0 +1,27 @@
+[package]
+name = "actuality-attributes"
+version = "0.1.0"
+rust_version = "1.56.0"
+edition = "2021"
+authors = ["Begley Brothers Inc. <begleybrothers@gmail.com>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/rtm-rs/actuality"
+homepage = "https://rtm-rs.org"
+documentation = "https://docs.rs/actuality"
+description = """
+Attributes for implementing CQRS-ES with Rust Type Mapper (RTM) crate rtm-rs.
+"""
+categories = [
+    "database",
+    "data-structures",
+    "asynchronous",
+    "rust-patterns"
+]
+
+keywords = ["async", "cqrs", "event-sourcing", ]
+autoexamples = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
