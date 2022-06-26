@@ -69,7 +69,10 @@ fn default_addr() -> String {
 
 impl Server {
     fn new() -> Self {
-        Self { ..Default::default() }
+        match envy::prefixed("RTM_JS_SERVER_").from_env::<Server>() {
+            Ok(config) => config,
+            Err(_error) => Self { ..Default::default() },
+        }
     }
 }
 
@@ -101,7 +104,6 @@ impl std::fmt::Display for Server {
 
         fields.push(("port", Field::Port(self.port)));
 
-        // let mut str = String::new();
         for (name, field) in &fields {
             // Manually dispatching based on the field variant we have.
             match field {
@@ -125,36 +127,6 @@ fn make_flag(f: &mut std::fmt::Formatter<'_>, name: &str, value: &str) -> std::f
     f.write_str(" ")?;
     f.write_str(value)
 }
-
-// impl<'a> Serialize for Server<'a> {
-//     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-//     where
-//         S: Serializer,
-//     {
-//         // We need to know the number of fields we're serializing
-//         // ahead of time when we serialize a struct, so we'll make a
-//         // Vec and fill it, then use `Vec::len` to get the number
-//         // of fields we're actually serializing.
-//         let mut fields: Vec<(&str, Field)> = Vec::new();
-//         if let Some(address) = self.address {
-//             fields.push(("address", Box::new(address)));
-//         }
-//         match envy::prefixed("RTM_JS_SERVER_").from_env::<Server>() {
-//             Ok(config) => println!("{:#?}", config),
-//             Err(error) => panic!("{:#?}", error)
-//         }
-//     }
-// }
-
-// impl serde::Serialize for Server {
-//     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-//     where
-//         S: serde::Serializer,
-//     {
-//         let mut map = serializer.serialize_struct(self, 7)?;
-//         map.end()
-//     }
-// }
 
 #[cfg(test)]
 mod tests {
@@ -197,8 +169,21 @@ mod tests {
         assert_eq!(server.pid, None);
         assert_eq!(server.port, 4223);
     }
+
     #[test]
-    fn config_server_string() {
+    fn config_server_flags() {
+        std::env::set_var("RTM_JS_SERVER_ADDR", "127.0.0.1");
+        std::env::set_var("RTM_JS_SERVER_PORT", "4223");
+        let server = Server::new();
+        assert_eq!(server.to_string(), " --addr 127.0.0.1 --port 4223")
+    }
+
+    #[test]
+    fn config_server_flags_default() {
+        // remove variables - tests are run in the same environment
+        std::env::remove_var("RTM_JS_SERVER_ADDR");
+        std::env::remove_var("RTM_JS_SERVER_PORT");
+
         let server = Server::new();
         assert_eq!(server.to_string(), " --addr 0.0.0.0 --port 4222")
     }
