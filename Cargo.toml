@@ -27,10 +27,25 @@ members = [
   "actuality-attributes",
   "actuality-examples",
   "actuality-jetstream",
-  "actuality-testing",
+  "actuality-tests",
+  "actuality-utilities",
   "actuality-macros",
   ]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+rand = "0.8.5"
+# log = "0.4.11"
+# serde_json = "1.0.59"
+# serde = "1.0.117"
+# serde_derive = "1.0.117"
+# env_logger = "0.8.1"
+
+[dev-dependencies]
+actuality-utilities = { path = "actuality-utilities" }
+async-trait = "0.1"
+criterion = { version ="0.3.5", features = ["html_reports"] }
+cucumber = "0.13"
+futures = "0.3"
+nats = "0.21"

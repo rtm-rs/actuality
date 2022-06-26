@@ -1,5 +1,5 @@
 [package]
-name = "actuality-jetstream"
+name = "actuality-tests"
 version = "0.1.0"
 rust_version = "1.56.0"
 edition = "2021"
@@ -10,7 +10,7 @@ repository = "https://github.com/rtm-rs/actuality"
 homepage = "https://rtm-rs.org"
 documentation = "https://docs.rs/actuality"
 description = """
-Jetstream adapter for implementing CQRS-ES with Rust Type Mapper (RTM) crate rtm-rs.
+Test support for implementing CQRS-ES with the Rust Type Mapper (RTM) crate rtm-rs.
 """
 categories = [
     "database",
@@ -25,15 +25,3 @@ autoexamples = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-envy = "0.4"
-postcard = "1.0.0"
-serde = { version = "1.0.137", default-features = false }
-
-[dev-dependencies]
-async-trait = "0.1"
-cucumber = "0.13"
-futures = "0.3"
-
-# [[test]]
-# name = "example"
-# harness = false

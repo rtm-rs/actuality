@@ -1,5 +1,5 @@
 [package]
-name = "actuality-testing"
+name = "actuality-utilities"
 version = "0.1.0"
 rust_version = "1.56.0"
 edition = "2021"
@@ -10,7 +10,7 @@ repository = "https://github.com/rtm-rs/actuality"
 homepage = "https://rtm-rs.org"
 documentation = "https://docs.rs/actuality"
 description = """
-Test support for implementing CQRS-ES with the Rust Type Mapper (RTM) crate rtm-rs.
+Utilities for implementing CQRS-ES with the Rust Type Mapper (RTM) crate rtm-rs.
 """
 categories = [
     "database",
@@ -24,4 +24,22 @@ autoexamples = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "utilities"
+path = "src/lib.rs"
+
+[[bin]]
+name = "stan"
+path = "src/stan.rs"
+
 [dependencies]
+nats = "0.21"
+rand = "0.8.5"
+# log = "0.4.11"
+serde_json = "1.0.59"
+serde = "1.0.117"
+serde_derive = "1.0.117"
+testcontainers = "0.14.0"
+# env_logger = "0.8.1"
+
+[dev-dependencies]

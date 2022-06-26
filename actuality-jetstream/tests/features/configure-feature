@@ -1,0 +1,8 @@
+Feature:  NATS-JetsStream Connection Pool
+
+Background:
+Given a NATS-JetStream server
+And a connection pool
+
+Example:
+Then a count of available connections is available
