@@ -34,6 +34,6 @@ async-trait = "0.1"
 cucumber = "0.13"
 futures = "0.3"
 
-# [[test]]
-# name = "example"
-# harness = false
+[[test]]
+name = "example"
+harness = false

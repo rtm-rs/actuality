@@ -1,20 +1,18 @@
 //! Server Options
 //!
-// use core::ops::Deref;
-use serde::{Serialize, Deserialize};
-use postcard::{from_bytes, to_vec};
-// use heapless::Vec;
+//! | Environment                      | Server Flag               | Description  |
+//! |----------------------------------|---------------------------|--------------|
+//! | `RTM_JS_SERVER_ADDR`             | `-a`,  `--addr`           | Host address to bind to (default: 0.0.0.0 - all interfaces). |
+//! | `RTM_JS_SERVER_PORT`             | `-p`,  `--port`           | NATS client port (default: 4222).   |
+//! | `RTM_JS_SERVER_PID`              | `-P`,  `--pid`            | File to store the process ID (PID). |
+//! | `RTM_JS_SERVER_HTTP_PORT`        | `-m`,  `--http_port`      | HTTP port for monitoring dashboard (exclusive of --https_port). |
+//! | `RTM_JS_SERVER_HTTPS_PORT`       | `-ms`, `--https_port`     | HTTPS port monitoring for monitoring dashboard (exclusive of --http_port). |
+//! | `RTM_JS_SERVER_CONFIG`           | `-c`,  `--config`         | Path to NATS server configuration file.        |
+//! | `RTM_JS_SERVER_SIGNAL`           | `-sl`, `--signal`         | Send a signal to nats-server process.          |
+//! | `RTM_JS_SERVER_CLIENT_ADVERTISE` | `--client_advertise`      | Client HostPort to advertise to other servers. |
 
-// Server Option         Description
-// -a,  --addr           Host address to bind to (default: 0.0.0.0 - all interfaces).
-// -p,  --port           NATS client port (default: 4222).
-// -P,  --pid            File to store the process ID (PID).
-// -m,  --http_port      HTTP port for monitoring dashboard (exclusive of --https_port).
-// -ms, --https_port     HTTPS port monitoring for monitoring dashboard (exclusive of --http_port).
-// -c,  --config         Path to NATS server configuration file.
-// -sl, --signal         Send a signal to nats-server process. See
-// --client_advertise    Client HostPort to advertise to other servers.
-// -t                    Test configuration and exit
+use serde::{Serialize, Deserialize};
+
 #[derive(Debug, Deserialize, Serialize)]
 struct Server {
     #[serde(default="default_addr")]
