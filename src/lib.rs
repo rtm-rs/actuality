@@ -1,3 +1,13 @@
+pub mod aggregate;
+pub mod event;
+pub mod store;
+
+pub use crate::aggregate::Aggregate;
+pub use crate::aggregate::context::AggregateContext;
+pub use crate::aggregate::error::AggregateError;
+pub use crate::event::DomainEvent;
+pub use crate::store::Store;
+
 #[cfg(test)]
 mod tests {
     #[test]

@@ -1,4 +1,7 @@
-// Source: https://github.com/serverlesstechnology/cqrs/blob/master/src/mem_store.rs
+// Sources:
+// - https://github.com/serverlesstechnology/cqrs/blob/master/src/mem_store.rs
+// - https://github.com/Joatin/eventific/blob/master/eventific/src/store/memory_store.rs
+//
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
 
@@ -11,7 +14,7 @@ use crate::{Aggregate, AggregateContext, AggregateError, Store};
 ///
 /// Creation and use in a constructing a `CqrsFramework`:
 /// ```
-/// # use cqrs_es::doc::{MyAggregate, MyService};
+/// use cqrs_es::doc::{MyAggregate, MyService};
 /// use cqrs_es::CqrsFramework;
 /// use cqrs_es::mem_store::MemoryStore;
 ///
@@ -45,7 +48,7 @@ impl<A: Aggregate> MemoryStore<A> {
     /// let all_locked_events = store.get_events();
     /// let unlocked_events = all_locked_events.read().unwrap();
     /// match unlocked_events.get("test-aggregate-id-C450D1A") {
-    ///     Some(events) => {
+    ///     Some(enc_trait]vents) => {
     ///         for event in events {
     ///             println!("{:?}", event);
     ///         }

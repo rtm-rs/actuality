@@ -1,10 +1,21 @@
-// Source: https://github.com/serverlesstechnology/cqrs/blob/master/src/store.rs
+// Sources:
+// - https://github.com/serverlesstechnology/cqrs/blob/master/src/mem_store.rs
+// - https://github.com/Joatin/eventific/blob/master/eventific/src/store/memory_store.rs
+//
+pub mod memory_store;
+
 use async_trait::async_trait;
 use std::collections::HashMap;
 
 use crate::aggregate::Aggregate;
+use crate::aggregate::context::AggregateContext;
 use crate::event::EventEnvelope;
 use crate::AggregateError;
+
+#[derive(Clone, Debug)]
+pub struct StoreContext {
+    pub service_name: String,
+}
 
 /// The abstract central source for loading past events and committing new events.
 #[async_trait]
@@ -16,6 +27,16 @@ where
     /// This is used by the [CqrsFramework](struct.CqrsFramework.html) when loading
     /// an aggregate in order to handle incoming commands.
     type AC: AggregateContext<A>;
+
+    /// Called as part of the setup process
+    ///
+    /// All your setup such as setting up connection pools, verify that targets
+    /// exists, etc., should be implemented here.
+    async fn init(&mut self, _context: StoreContext) -> Result<(), AggregateError<A::Error>> {
+        println!("Setting up a new MemoryStore");
+        println!("The MemoryStore does not persist events longer than the lifetime of the process. It is recommended that you set up a more accurate store.");
+        Ok(())
+    }
 
     /// Load all events for a particular `aggregate_id`
     async fn load_events(
@@ -34,15 +55,4 @@ where
         context: Self::AC,
         metadata: HashMap<String, String>,
     ) -> Result<Vec<EventEnvelope<A>>, AggregateError<A::Error>>;
-}
-
-/// Returns the aggregate as well as the context around it.
-/// This is used internally within an `EventStore` to persist an aggregate instance and events
-/// with the correct context after it has been loaded and modified.
-pub trait AggregateContext<A>
-where
-    A: Aggregate,
-{
-    /// The aggregate instance with all state loaded.
-    fn aggregate(&self) -> &A;
 }
