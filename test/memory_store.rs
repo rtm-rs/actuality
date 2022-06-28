@@ -192,7 +192,7 @@ fn metadata() -> HashMap<String, String> {
 
 #[tokio::test]
 async fn test_mem_store() {
-    let event_store = MemStore::<TestAggregate>::default();
+    let event_store = MemoryStore::<TestAggregate>::default();
     let id = "test_id_A";
     let initial_events = event_store.load_events(&id).await.unwrap();
     assert_eq!(0, initial_events.len());

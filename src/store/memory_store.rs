@@ -13,7 +13,7 @@ use crate::{Aggregate, AggregateContext, AggregateError, store::EventStore};
 ///  Simple memory store useful for application development and testing purposes.
 ///
 /// Creation and use in a constructing a `Cqrs`:
-/// ```
+/// ```rust
 /// # use actuality::doc::{MyAggregate, MyService};
 /// use actuality::Cqrs;
 /// use actuality::MemoryStore;
@@ -39,7 +39,8 @@ impl<A: Aggregate> MemoryStore<A> {
     ///
     /// This can be used to verify the state of events that have been committed.
     /// Example of reading and displaying stored events:
-    /// ```
+    ///
+    /// ```rust
     /// # use actuality::doc::MyAggregate;
     /// # use actuality::EventEnvelope;
     /// # use actuality::MemoryStore;

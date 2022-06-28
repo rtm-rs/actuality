@@ -39,14 +39,14 @@ where
     /// to be used within the command handler.
     ///
     /// For a simple in-memory `EventStore` suitable for experimentation or testing see
-    /// [MemStore](mem_store/struct.MemStore.html).
+    /// [MemoryStore](mem_store/struct.MemoryStore.html).
     ///
     /// ```rust
     /// # use actuality::doc::{MyAggregate, MyService};
     /// use actuality::Cqrs;
-    /// use actuality::mem_store::MemStore;
+    /// use actuality::MemoryStore;
     ///
-    /// let store = MemStore::<MyAggregate>::default();
+    /// let store = MemoryStore::<MyAggregate>::default();
     /// let queries = vec![];
     /// let service = MyService::default();
     ///
@@ -78,9 +78,9 @@ where
     /// ```rust
     /// # use actuality::doc::{MyAggregate, MyQuery, MyService};
     /// use actuality::Cqrs;
-    /// use actuality::mem_store::MemStore;
+    /// use actuality::MemoryStore;
     ///
-    /// let store = MemStore::<MyAggregate>::default();
+    /// let store = MemoryStore::<MyAggregate>::default();
     /// let queries = vec![];
     /// let service = MyService::default();
     ///
@@ -114,10 +114,10 @@ where
     /// ```
     /// # use actuality::{AggregateError, Cqrs};
     /// # use actuality::doc::{MyAggregate, MyCommands, MyUserError};
-    /// # use actuality::mem_store::MemStore;
+    /// # use actuality::MemoryStore;
     /// # use std::collections::HashMap;
     /// # use chrono;
-    /// type MyFramework = Cqrs<MyAggregate,MemStore<MyAggregate>>;
+    /// type MyFramework = Cqrs<MyAggregate,MemoryStore<MyAggregate>>;
     ///
     /// async fn do_something(cqrs: MyFramework) -> Result<(),AggregateError<MyUserError>> {
     ///     let command = MyCommands::DoSomething;
@@ -155,10 +155,10 @@ where
     /// ```
     /// # use actuality::{AggregateError, Cqrs};
     /// # use actuality::doc::{MyAggregate, MyCommands, MyUserError};
-    /// # use actuality::mem_store::MemStore;
+    /// # use actuality::MemoryStore;
     /// # use std::collections::HashMap;
     /// # use chrono;
-    /// type MyFramework = Cqrs<MyAggregate,MemStore<MyAggregate>>;
+    /// type MyFramework = Cqrs<MyAggregate,MemoryStore<MyAggregate>>;
     ///
     /// async fn do_something(cqrs: MyFramework) -> Result<(),AggregateError<MyUserError>>  {
     ///     let command = MyCommands::DoSomething;

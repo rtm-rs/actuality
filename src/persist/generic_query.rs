@@ -54,6 +54,7 @@ where
     /// by the query repository will simply be ignored.
     ///
     /// _Example: An error handler that panics on any error._
+    /// 
     /// ```
     /// # use actuality::doc::MyAggregate;
     /// # use actuality::persist::GenericQuery;

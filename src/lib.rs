@@ -10,6 +10,7 @@ pub mod test;
 pub use crate::aggregate::Aggregate;
 pub use crate::aggregate::context::AggregateContext;
 pub use crate::aggregate::error::AggregateError;
+pub use crate::cqrs::Cqrs;
 pub use crate::event::DomainEvent;
 pub use crate::event::EventEnvelope;
 pub use crate::query::View;

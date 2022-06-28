@@ -7,7 +7,7 @@ use std::sync::{Arc, RwLock};
 
 use serde::{Deserialize, Serialize};
 
-use actuality::mem_store::MemStore;
+use actuality::MemoryStore;
 use actuality::test::TestFramework;
 use actuality::Query;
 use actuality::{Aggregate, AggregateError, Cqrs, DomainEvent, EventEnvelope, EventStore};
@@ -250,7 +250,7 @@ fn test_framework_failure_test_b() {
 
 #[tokio::test]
 async fn framework_test() {
-    let event_store = MemStore::default();
+    let event_store = MemoryStore::default();
     let stored_events = event_store.get_events();
 
     let delivered_events = Default::default();

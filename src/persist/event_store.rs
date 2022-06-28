@@ -92,7 +92,7 @@ where
     /// Creates a new `PersistedEventStore` from the provided event repository,
     /// using events as the single source of truth.
     ///
-    /// ```
+    /// ```rust
     /// # use actuality::doc::{MyAggregate, MyService};
     /// # use actuality::Cqrs;
     /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
@@ -141,7 +141,7 @@ where
     /// Creates a new `PersistedEventStore` from the provided event repository,
     /// using events and aggregate snapshots as the source of truth.
     ///
-    /// ```
+    /// ```rust
     /// # use actuality::doc::{MyAggregate, MyService};
     /// # use actuality::Cqrs;
     /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
