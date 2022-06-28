@@ -93,15 +93,15 @@ where
     /// using events as the single source of truth.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyService};
-    /// # use cqrs_es::CqrsFramework;
-    /// # use cqrs_es::persist::doc::{MyDatabaseConnection, MyEventRepository};
-    /// # use cqrs_es::persist::PersistedEventStore;
+    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::Cqrs;
+    /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
+    /// # use actuality::persist::PersistedEventStore;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = MyEventRepository::new(my_db_connection);
     /// let store = PersistedEventStore::<MyEventRepository,MyAggregate>::new_event_store(repo);
     /// let service = MyService;
-    /// let cqrs = CqrsFramework::new(store, vec![], service);
+    /// let cqrs = Cqrs::new(store, vec![], service);
     /// # }
     /// ```
     pub fn new_event_store(repo: R) -> Self {
@@ -119,14 +119,14 @@ where
     /// not used as the source of truth when loading an aggregate.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyService};
-    /// # use cqrs_es::CqrsFramework;
-    /// # use cqrs_es::persist::doc::{MyDatabaseConnection, MyEventRepository};
-    /// # use cqrs_es::persist::PersistedEventStore;
+    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::Cqrs;
+    /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
+    /// # use actuality::persist::PersistedEventStore;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = MyEventRepository::new(my_db_connection);
     /// let store = PersistedEventStore::<MyEventRepository,MyAggregate>::new_aggregate_store(repo);
-    /// let cqrs = CqrsFramework::new(store, vec![], MyService);
+    /// let cqrs = Cqrs::new(store, vec![], MyService);
     /// # }
     /// ```
     pub fn new_aggregate_store(repo: R) -> Self {
@@ -142,14 +142,14 @@ where
     /// using events and aggregate snapshots as the source of truth.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyService};
-    /// # use cqrs_es::CqrsFramework;
-    /// # use cqrs_es::persist::doc::{MyDatabaseConnection, MyEventRepository};
-    /// # use cqrs_es::persist::PersistedEventStore;
+    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::Cqrs;
+    /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
+    /// # use actuality::persist::PersistedEventStore;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = MyEventRepository::new(my_db_connection);
     /// let store = PersistedEventStore::<MyEventRepository,MyAggregate>::new_snapshot_store(repo, 100);
-    /// let cqrs = CqrsFramework::new(store, vec![], MyService);
+    /// let cqrs = Cqrs::new(store, vec![], MyService);
     /// # }
     /// ```
     pub fn new_snapshot_store(repo: R, snapshot_size: usize) -> Self {

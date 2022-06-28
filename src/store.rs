@@ -24,7 +24,7 @@ where
     A: Aggregate,
 {
     /// Provides the current state of an aggregate along with surrounding context.
-    /// This is used by the [CqrsFramework](struct.CqrsFramework.html) when loading
+    /// This is used by the [Cqrs](struct.Cqrs.html) when loading
     /// an aggregate in order to handle incoming commands.
     type AC: AggregateContext<A>;
 

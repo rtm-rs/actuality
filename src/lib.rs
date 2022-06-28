@@ -1,4 +1,5 @@
 pub mod aggregate;
+pub mod cqrs;
 pub mod doc;
 pub mod event;
 pub mod persist;

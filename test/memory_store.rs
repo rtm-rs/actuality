@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 use actuality::MemoryStore;
 use actuality::test::TestFramework;
 use actuality::Query;
-use actuality::{Aggregate, AggregateError, CqrsFramework, DomainEvent, EventEnvelope, EventStore};
+use actuality::{Aggregate, AggregateError, Cqrs, DomainEvent, EventEnvelope, EventStore};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TestAggregate {

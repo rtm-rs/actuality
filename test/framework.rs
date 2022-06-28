@@ -7,10 +7,10 @@ use std::sync::{Arc, RwLock};
 
 use serde::{Deserialize, Serialize};
 
-use cqrs_es::mem_store::MemStore;
-use cqrs_es::test::TestFramework;
-use cqrs_es::Query;
-use cqrs_es::{Aggregate, AggregateError, CqrsFramework, DomainEvent, EventEnvelope, EventStore};
+use actuality::mem_store::MemStore;
+use actuality::test::TestFramework;
+use actuality::Query;
+use actuality::{Aggregate, AggregateError, Cqrs, DomainEvent, EventEnvelope, EventStore};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TestAggregate {
@@ -256,7 +256,7 @@ async fn framework_test() {
     let delivered_events = Default::default();
     let view = TestView::new(Arc::clone(&delivered_events));
 
-    let cqrs = CqrsFramework::new(event_store, vec![Box::new(view)], TestService);
+    let cqrs = Cqrs::new(event_store, vec![Box::new(view)], TestService);
     let uuid = uuid::Uuid::new_v4().to_string();
     let id = uuid.clone();
     let metadata = metadata();

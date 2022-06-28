@@ -57,8 +57,8 @@ pub struct StoreEvent<Event: Serialize + DeserializeOwned + Send + Sync> {
 ///
 /// # Examples
 /// ```
-/// # use cqrs_es::doc::Customer;
-/// # use cqrs_es::{Aggregate,DomainEvent};
+/// # use actuality::doc::Customer;
+/// # use actuality::{Aggregate,DomainEvent};
 /// # use serde::{Serialize,Deserialize};
 /// #[derive(Clone,Debug,Serialize,Deserialize,PartialEq)]
 /// pub enum CustomerEvent {

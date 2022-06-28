@@ -29,9 +29,9 @@ where
     ///
     /// ```
     /// # use std::sync::Arc;
-    /// # use cqrs_es::doc::MyAggregate;
-    /// # use cqrs_es::persist::doc::{MyDatabaseConnection, MyView, MyViewRepository};
-    /// # use cqrs_es::persist::GenericQuery;
+    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::persist::doc::{MyDatabaseConnection, MyView, MyViewRepository};
+    /// # use actuality::persist::GenericQuery;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = Arc::new(MyViewRepository::new(my_db_connection));
     /// let query = GenericQuery::<MyViewRepository, MyView, MyAggregate>::new(repo);
@@ -55,9 +55,9 @@ where
     ///
     /// _Example: An error handler that panics on any error._
     /// ```
-    /// # use cqrs_es::doc::MyAggregate;
-    /// # use cqrs_es::persist::GenericQuery;
-    /// # use cqrs_es::persist::doc::{MyViewRepository,MyView};
+    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::persist::GenericQuery;
+    /// # use actuality::persist::doc::{MyViewRepository,MyView};
     /// # fn config(mut query: GenericQuery<MyViewRepository,MyView,MyAggregate>) {
     /// query.use_error_handler(Box::new(|e|panic!("{}",e)));
     /// # }
@@ -70,9 +70,9 @@ where
     /// Use this method to load a materialized view when requested by a user.
     ///
     /// ```
-    /// # use cqrs_es::doc::MyAggregate;
-    /// # use cqrs_es::persist::GenericQuery;
-    /// # use cqrs_es::persist::doc::{MyViewRepository,MyView};
+    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::persist::GenericQuery;
+    /// # use actuality::persist::doc::{MyViewRepository,MyView};
     /// # async fn config(mut query: GenericQuery<MyViewRepository,MyView,MyAggregate>) {
     /// let view = query.load("customer-B24DA0").await;
     /// # }
@@ -141,7 +141,7 @@ where
 /// result.
 ///
 /// ```rust
-/// use cqrs_es::persist::{PersistenceError, QueryErrorHandler};
+/// use actuality::persist::{PersistenceError, QueryErrorHandler};
 /// fn create_error_handler() {
 ///     // An error handler that panics when any persistence error is encountered.
 ///     let error_handler: Box<QueryErrorHandler> = Box::new(error_handler);

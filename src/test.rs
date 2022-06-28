@@ -23,8 +23,8 @@ where
     /// Initiates an aggregate test with no previous events.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyService};
-    /// use cqrs_es::test::TestFramework;
+    /// # use actuality::doc::{MyAggregate, MyService};
+    /// use actuality::test::TestFramework;
     ///
     /// let executor = TestFramework::<MyAggregate>::with(MyService)
     ///     .given_no_previous_events();
@@ -36,11 +36,12 @@ where
             service: self.service,
         }
     }
+    
     /// Initiates an aggregate test with a collection of previous events.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyEvents, MyService};
-    /// use cqrs_es::test::TestFramework;
+    /// # use actuality::doc::{MyAggregate, MyEvents, MyService};
+    /// use actuality::test::TestFramework;
     ///
     /// let executor = TestFramework::<MyAggregate>::with(MyService)
     ///     .given(vec![MyEvents::SomethingWasDone]);
@@ -71,8 +72,8 @@ where
     /// to test against.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyCommands, MyService};
-    /// use cqrs_es::test::TestFramework;
+    /// # use actuality::doc::{MyAggregate, MyCommands, MyService};
+    /// use actuality::test::TestFramework;
     ///
     /// let executor = TestFramework::<MyAggregate>::with(MyService)
     ///     .given_no_previous_events();
@@ -110,9 +111,9 @@ impl<A: Aggregate> AggregateResultValidator<A> {
     /// Verifies that the expected events have been produced by the command.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyCommands, MyEvents, MyService};
+    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService};
     /// # async fn test() {
-    /// use cqrs_es::test::TestFramework;
+    /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)
     ///     .given_no_previous_events()
@@ -135,8 +136,8 @@ impl<A: Aggregate> AggregateResultValidator<A> {
     /// further validation.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyCommands, MyEvents, MyService};
-    /// use cqrs_es::test::TestFramework;
+    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService};
+    /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)
     ///     .given_no_previous_events()
@@ -156,8 +157,8 @@ impl<A: Aggregate> AggregateResultValidator<A> {
     /// Returns the internal error payload for validation by the user.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
-    /// use cqrs_es::test::TestFramework;
+    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
+    /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)
     ///     .given_no_previous_events()
@@ -180,8 +181,8 @@ where
     /// > Note that the configured Error *must* implement `std::cmp::PartialEq`.
     ///
     /// ```
-    /// # use cqrs_es::doc::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
-    /// use cqrs_es::test::TestFramework;
+    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
+    /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)
     ///     .given_no_previous_events()

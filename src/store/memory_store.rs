@@ -12,14 +12,14 @@ use crate::{Aggregate, AggregateContext, AggregateError, store::EventStore};
 
 ///  Simple memory store useful for application development and testing purposes.
 ///
-/// Creation and use in a constructing a `CqrsFramework`:
+/// Creation and use in a constructing a `Cqrs`:
 /// ```
 /// # use actuality::doc::{MyAggregate, MyService};
-/// use actuality::CqrsFramework;
+/// use actuality::Cqrs;
 /// use actuality::MemoryStore;
 ///
 /// let store = MemoryStore::<MyAggregate>::default();
-/// let cqrs = CqrsFramework::new(store, vec![], MyService);
+/// let cqrs = Cqrs::new(store, vec![], MyService);
 /// ```
 pub struct MemoryStore<A: Aggregate + Send + Sync> {
     events: Arc<LockedEventEnvelopeMap<A>>,
@@ -178,7 +178,7 @@ impl<A: Aggregate> MemoryStore<A> {
 }
 /// Holds context for a pure event store implementation for MemoryStore.
 ///
-/// This is used internally by the `CqrsFramework`.
+/// This is used internally by the `Cqrs`.
 pub struct MemoryStoreAggregateContext<A>
 where
     A: Aggregate,

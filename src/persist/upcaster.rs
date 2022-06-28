@@ -96,9 +96,9 @@ impl From<ParseIntError> for SemanticVersionError {
 /// version configured on the upcaster.
 ///
 /// ```
-/// use cqrs_es::persist::{EventUpcaster,SemanticVersionEventUpcaster};
+/// use actuality::persist::{EventUpcaster,SemanticVersionEventUpcaster};
 /// use serde_json::Value;
-/// use cqrs_es::persist::SerializedEvent;
+/// use actuality::persist::SerializedEvent;
 ///
 /// let upcast_function = Box::new(|payload: Value| match payload {
 ///             Value::Object(mut object_map) => {
