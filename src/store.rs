@@ -19,7 +19,7 @@ pub struct StoreContext {
 
 /// The abstract central source for loading past events and committing new events.
 #[async_trait]
-pub trait Store<A>: Send + Sync
+pub trait EventStore<A>: Send + Sync
 where
     A: Aggregate,
 {

@@ -7,10 +7,10 @@ use std::sync::{Arc, RwLock};
 
 use serde::{Deserialize, Serialize};
 
-use cqrs_es::mem_store::MemStore;
-use cqrs_es::test::TestFramework;
-use cqrs_es::Query;
-use cqrs_es::{Aggregate, AggregateError, CqrsFramework, DomainEvent, EventEnvelope, EventStore};
+use actuality::MemoryStore;
+use actuality::test::TestFramework;
+use actuality::Query;
+use actuality::{Aggregate, AggregateError, CqrsFramework, DomainEvent, EventEnvelope, EventStore};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TestAggregate {

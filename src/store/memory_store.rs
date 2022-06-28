@@ -8,15 +8,15 @@ use std::sync::{Arc, RwLock};
 use async_trait::async_trait;
 
 use crate::event::EventEnvelope;
-use crate::{Aggregate, AggregateContext, AggregateError, Store};
+use crate::{Aggregate, AggregateContext, AggregateError, store::EventStore};
 
 ///  Simple memory store useful for application development and testing purposes.
 ///
 /// Creation and use in a constructing a `CqrsFramework`:
 /// ```
-/// use cqrs_es::doc::{MyAggregate, MyService};
-/// use cqrs_es::CqrsFramework;
-/// use cqrs_es::mem_store::MemoryStore;
+/// # use actuality::doc::{MyAggregate, MyService};
+/// use actuality::CqrsFramework;
+/// use actuality::MemoryStore;
 ///
 /// let store = MemoryStore::<MyAggregate>::default();
 /// let cqrs = CqrsFramework::new(store, vec![], MyService);
@@ -40,15 +40,15 @@ impl<A: Aggregate> MemoryStore<A> {
     /// This can be used to verify the state of events that have been committed.
     /// Example of reading and displaying stored events:
     /// ```
-    /// # use cqrs_es::doc::MyAggregate;
-    /// # use cqrs_es::EventEnvelope;
-    /// # use cqrs_es::mem_store::MemoryStore;
+    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::EventEnvelope;
+    /// # use actuality::MemoryStore;
     /// let store = MemoryStore::<MyAggregate>::default();
     /// //...
     /// let all_locked_events = store.get_events();
     /// let unlocked_events = all_locked_events.read().unwrap();
     /// match unlocked_events.get("test-aggregate-id-C450D1A") {
-    ///     Some(enc_trait]vents) => {
+    ///     Some(events) => {
     ///         for event in events {
     ///             println!("{:?}", event);
     ///         }
@@ -86,7 +86,7 @@ impl<A: Aggregate> MemoryStore<A> {
 }
 
 #[async_trait]
-impl<A: Aggregate> Store<A> for MemoryStore<A> {
+impl<A: Aggregate> EventStore<A> for MemoryStore<A> {
     type AC = MemoryStoreAggregateContext<A>;
 
     async fn load_events(

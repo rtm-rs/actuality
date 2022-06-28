@@ -15,7 +15,7 @@ use serde::de::DeserializeOwned;
 use serde::Serialize;
 use uuid::Uuid;
 
-pub type SequenceNumber = i32;
+pub type SequenceNumber = usize;
 
 pub trait Event {
 
