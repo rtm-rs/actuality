@@ -96,7 +96,7 @@ mod test {
 
     use async_trait::async_trait;
 
-    use crate::doc::{MyAggregate, MyEvents};
+    use crate::doc::setup::{MyAggregate, MyEvents};
     use crate::persist::event_store::shared_test::MockRepo;
     use crate::persist::replay::QueryReplay;
     use crate::persist::SerializedEvent;
@@ -131,9 +131,13 @@ mod test {
 
     #[tokio::test]
     async fn query_replay() {
+        std::env::set_var("RTM_SYSTEM_ID", "1ead13j");
+        
         let expected_events = vec![EventEnvelope {
             aggregate_id: AGGREGATE_ID.to_string(),
+            event_type: "all".to_string(),
             sequence: 1,
+            system_id: crate::RTM_SYSTEM_ID.clone().to_string(),
             payload: MyEvents::SomethingWasDone,
             metadata: Default::default(),
         }];

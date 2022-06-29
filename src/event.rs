@@ -69,7 +69,7 @@ pub struct StoreEvent<Event: Serialize + DeserializeOwned + Send + Sync> {
 pub trait DomainEvent:
     Serialize + DeserializeOwned + Clone + PartialEq + fmt::Debug + Sync + Send
 {
-    /// A name specifying the event, used for event upcasting.
+    /// A name specifying the event type, used for event upcasting.
     fn event_type(&self) -> String;
     /// A version of the `event_type`, used for event upcasting.
     fn event_version(&self) -> String;
@@ -79,7 +79,9 @@ impl<A: Aggregate> Clone for EventEnvelope<A> {
     fn clone(&self) -> Self {
         EventEnvelope {
             aggregate_id: self.aggregate_id.clone(),
+            event_type: self.event_type.clone(),
             sequence: self.sequence,
+            system_id: self.system_id.clone(),
             payload: self.payload.clone(),
             metadata: self.metadata.clone(),
         }

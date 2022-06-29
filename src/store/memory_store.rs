@@ -130,7 +130,9 @@ impl<A: Aggregate> EventStore<A> for MemoryStore<A> {
     ) -> Result<Vec<EventEnvelope<A>>, AggregateError<A::Error>> {
         let aggregate_id = context.aggregate_id.as_str();
         let current_sequence = context.current_sequence;
-        let wrapped_events = self.wrap_events(aggregate_id, current_sequence, events, metadata);
+        let event_type = ""; //context.event_type;
+        let system_id = ""; //context.system_id;
+        let wrapped_events = self.wrap_events(aggregate_id, event_type, current_sequence, system_id, events, metadata);
         let new_events_qty = wrapped_events.len();
         if new_events_qty == 0 {
             return Ok(Vec::default());
@@ -156,7 +158,9 @@ impl<A: Aggregate> MemoryStore<A> {
     fn wrap_events(
         &self,
         aggregate_id: &str,
+        event_type: &str,
         current_sequence: usize,
+        system_id: &str,
         resultant_events: Vec<A::Event>,
         base_metadata: HashMap<String, String>,
     ) -> Vec<EventEnvelope<A>> {
@@ -165,11 +169,15 @@ impl<A: Aggregate> MemoryStore<A> {
         for payload in resultant_events {
             sequence += 1;
             let aggregate_id: String = aggregate_id.to_string();
+            let event_type: String = event_type.to_string();
             let sequence = sequence;
+            let system_id: String = system_id.to_string();
             let metadata = base_metadata.clone();
             wrapped_events.push(EventEnvelope {
                 aggregate_id,
+                event_type,
                 sequence,
+                system_id,
                 payload,
                 metadata,
             });

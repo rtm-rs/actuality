@@ -1,24 +1,17 @@
 use crate::aggregate::Aggregate;
 
-use std::collections::HashMap;
-use std::fmt;
-use std::future::Future;
-use std::pin::Pin;
-
-use async_trait::async_trait;
-
-/// `EventEnvelope` is a data structure that encapsulates an event with its pertinent
-/// information.
-/// All of the associated data will be transported and persisted together and will be available
-/// for queries.
+/// `EventEnvelope` encapsulates an event with pertinent information.
 ///
-/// Within any system an event must be unique based on the compound key composed of its:
-/// - [`aggregate_type`](https://docs.rs/cqrs-es/latest/cqrs_es/trait.Aggregate.html#tymethod.aggregate_type)
+/// Event identity and event data is persisted together and can be replayed.
+///
+/// Each event must be unique based on the compound key composed of its:
 /// - `aggregate_id`
+/// - `event_type`
 /// - `sequence`
+/// - `system_id`
 ///
-/// Thus an `EventEnvelope` provides a uniqueness value along with an event `payload` and
-/// `metadata`.
+/// The `EventEnvelope` provides a uniqueness value along with
+/// the event `payload` and `metadata`.
 #[derive(Debug)]
 pub struct Envelope<A>
 where
@@ -26,10 +19,15 @@ where
 {
     /// The id of the aggregate instance.
     pub aggregate_id: String,
+    /// The id of the system, e.g. a source control hash or version number.
+    pub system_id: String,
     /// The sequence number for an aggregate instance.
     pub sequence: usize,
+    /// The event type is one of: `create`, `update`, `delete`
+    pub event_type: String,
     /// The event payload with all business information.
     pub payload: A::Event,
     /// Additional metadata for use in auditing, logging or debugging purposes.
-    pub metadata: HashMap<String, String>,
+    /// Example, relevant environment variable names and values.
+    pub metadata: std::collections::HashMap<String, String>,
 }

@@ -19,11 +19,16 @@ pub use crate::query::Query;
 pub use crate::store::EventStore;
 pub use crate::store::memory_store::MemoryStore;
 
+lazy_static::lazy_static!(
+    static ref RTM_SYSTEM_ID: String = std::env::var("RTM_SYSTEM_ID").expect("RTM_SYSTEM_ID environment variable must be set.");
+);
+
 #[cfg(test)]
 mod tests {
+
     #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
+    fn system_id_from_env() {
+        std::env::set_var("RTM_SYSTEM_ID", "1ead13j");
+        assert_eq!(crate::RTM_SYSTEM_ID.clone().to_string(), "1ead13j")
     }
 }

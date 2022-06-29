@@ -7,6 +7,6 @@ pub trait AggregateContext<A>
 where
     A: Aggregate,
 {
-    /// The aggregate instance with all state loaded.
+    /// The aggregate instance with all state/event data loaded.
     fn aggregate(&self) -> &A;
 }

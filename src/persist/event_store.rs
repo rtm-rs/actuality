@@ -252,7 +252,9 @@ where
                 _ => Self::update_snapshot_with_events(&events, context, commit_snapshot_to_event)?,
             }
         };
-        let wrapped_events = self.wrap_events(&aggregate_id, last_sequence, events, metadata);
+        let event_type = ""; //context.event_type;
+        let system_id = "";  //context.system_id;
+        let wrapped_events = self.wrap_events(&aggregate_id, event_type, last_sequence, system_id, events, metadata);
         let serialized_events: Vec<SerializedEvent> = serialize_events(&wrapped_events)?;
         let snapshot_update = snapshot_update.map(|s| (aggregate_id, s.0, s.1));
         self.repo
@@ -292,7 +294,9 @@ where
     fn wrap_events(
         &self,
         aggregate_id: &str,
+        event_type: &str,
         last_sequence: usize,
+        system_id: &str,
         resultant_events: Vec<A::Event>,
         base_metadata: HashMap<String, String>,
     ) -> Vec<EventEnvelope<A>> {
@@ -301,11 +305,15 @@ where
         for payload in resultant_events {
             sequence += 1;
             let aggregate_id: String = aggregate_id.to_string();
+            let event_type: String = event_type.to_string();
             let sequence = sequence;
+            let system_id: String = system_id.to_string();
             let metadata = base_metadata.clone();
             wrapped_events.push(EventEnvelope {
                 aggregate_id,
+                event_type,
                 sequence,
+                system_id,
                 payload,
                 metadata,
             });

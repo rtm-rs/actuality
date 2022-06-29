@@ -38,6 +38,7 @@ members = [
 async-trait = "0.1"
 chrono = "0.4.19"
 nats = "0.21"
+lazy_static = "1.4.0"
 rand = "0.8.5"
 rkyv = "0.7.39"
 serde_json = "1.0.81"

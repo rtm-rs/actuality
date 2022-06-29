@@ -136,11 +136,15 @@ impl<A: Aggregate> TryFrom<SerializedEvent> for EventEnvelope<A> {
     type Error = PersistenceError;
 
     fn try_from(event: SerializedEvent) -> Result<Self, Self::Error> {
+        let event_type = "".to_string();
+        let system_id = "".to_string();
         let payload = serde_json::from_value(event.payload)?;
         let metadata = serde_json::from_value(event.metadata)?;
         Ok(Self {
             aggregate_id: event.aggregate_id,
+            event_type,
             sequence: event.sequence,
+            system_id,
             payload,
             metadata,
         })
