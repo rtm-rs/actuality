@@ -25,13 +25,9 @@ mod context;
 mod error;
 mod event_repository;
 mod event_store;
-mod event_stream;
+pub mod event_stream;
 mod generic_query;
 mod replay;
 mod serialized_event;
 mod upcaster;
 mod view_repository;
-
-// Documentation items
-#[doc(hidden)]
-pub mod doc;

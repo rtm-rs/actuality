@@ -93,9 +93,9 @@ where
     /// using events as the single source of truth.
     ///
     /// ```rust
-    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyService};
     /// # use actuality::Cqrs;
-    /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
+    /// # use actuality::doc::persist::{MyDatabaseConnection, MyEventRepository};
     /// # use actuality::persist::PersistedEventStore;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = MyEventRepository::new(my_db_connection);
@@ -119,9 +119,9 @@ where
     /// not used as the source of truth when loading an aggregate.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyService};
     /// # use actuality::Cqrs;
-    /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
+    /// # use actuality::doc::persist::{MyDatabaseConnection, MyEventRepository};
     /// # use actuality::persist::PersistedEventStore;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = MyEventRepository::new(my_db_connection);
@@ -142,9 +142,9 @@ where
     /// using events and aggregate snapshots as the source of truth.
     ///
     /// ```rust
-    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyService};
     /// # use actuality::Cqrs;
-    /// # use actuality::persist::doc::{MyDatabaseConnection, MyEventRepository};
+    /// # use actuality::doc::persist::{MyDatabaseConnection, MyEventRepository};
     /// # use actuality::persist::PersistedEventStore;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = MyEventRepository::new(my_db_connection);

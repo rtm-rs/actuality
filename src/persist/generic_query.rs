@@ -29,8 +29,8 @@ where
     ///
     /// ```
     /// # use std::sync::Arc;
-    /// # use actuality::doc::MyAggregate;
-    /// # use actuality::persist::doc::{MyDatabaseConnection, MyView, MyViewRepository};
+    /// # use actuality::doc::setup::MyAggregate;
+    /// # use actuality::doc::persist::{MyDatabaseConnection, MyView, MyViewRepository};
     /// # use actuality::persist::GenericQuery;
     /// # fn config(my_db_connection: MyDatabaseConnection) {
     /// let repo = Arc::new(MyViewRepository::new(my_db_connection));
@@ -54,11 +54,11 @@ where
     /// by the query repository will simply be ignored.
     ///
     /// _Example: An error handler that panics on any error._
-    /// 
+    ///
     /// ```
-    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::doc::setup::MyAggregate;
     /// # use actuality::persist::GenericQuery;
-    /// # use actuality::persist::doc::{MyViewRepository,MyView};
+    /// # use actuality::doc::persist::{MyViewRepository,MyView};
     /// # fn config(mut query: GenericQuery<MyViewRepository,MyView,MyAggregate>) {
     /// query.use_error_handler(Box::new(|e|panic!("{}",e)));
     /// # }
@@ -71,9 +71,9 @@ where
     /// Use this method to load a materialized view when requested by a user.
     ///
     /// ```
-    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::doc::setup::MyAggregate;
     /// # use actuality::persist::GenericQuery;
-    /// # use actuality::persist::doc::{MyViewRepository,MyView};
+    /// # use actuality::doc::persist::{MyViewRepository,MyView};
     /// # async fn config(mut query: GenericQuery<MyViewRepository,MyView,MyAggregate>) {
     /// let view = query.load("customer-B24DA0").await;
     /// # }

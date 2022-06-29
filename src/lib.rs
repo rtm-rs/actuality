@@ -13,6 +13,7 @@ pub use crate::aggregate::error::AggregateError;
 pub use crate::cqrs::Cqrs;
 pub use crate::event::DomainEvent;
 pub use crate::event::EventEnvelope;
+pub use crate::persist::event_stream::ReplayStream;
 pub use crate::query::View;
 pub use crate::query::Query;
 pub use crate::store::EventStore;

@@ -57,7 +57,7 @@ pub struct StoreEvent<Event: Serialize + DeserializeOwned + Send + Sync> {
 ///
 /// # Examples
 /// ```
-/// # use actuality::doc::Customer;
+/// # use actuality::doc::setup::Customer;
 /// # use actuality::{Aggregate,DomainEvent};
 /// # use serde::{Serialize,Deserialize};
 /// #[derive(Clone,Debug,Serialize,Deserialize,PartialEq)]

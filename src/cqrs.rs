@@ -42,7 +42,7 @@ where
     /// [MemoryStore](mem_store/struct.MemoryStore.html).
     ///
     /// ```rust
-    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyService};
     /// use actuality::Cqrs;
     /// use actuality::MemoryStore;
     ///
@@ -76,7 +76,7 @@ where
     }
     /// Appends an additional query to the framework.
     /// ```rust
-    /// # use actuality::doc::{MyAggregate, MyQuery, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyQuery, MyService};
     /// use actuality::Cqrs;
     /// use actuality::MemoryStore;
     ///
@@ -113,7 +113,7 @@ where
     ///
     /// ```
     /// # use actuality::{AggregateError, Cqrs};
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyUserError};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyUserError};
     /// # use actuality::MemoryStore;
     /// # use std::collections::HashMap;
     /// # use chrono;
@@ -154,7 +154,7 @@ where
     ///
     /// ```
     /// # use actuality::{AggregateError, Cqrs};
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyUserError};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyUserError};
     /// # use actuality::MemoryStore;
     /// # use std::collections::HashMap;
     /// # use chrono;

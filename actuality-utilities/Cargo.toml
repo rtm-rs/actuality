@@ -33,6 +33,8 @@ name = "stan"
 path = "src/stan.rs"
 
 [dependencies]
+# actuality = { path = "./.." }
+async-trait = "0.1"
 nats = "0.21"
 rand = "0.8.5"
 # log = "0.4.11"

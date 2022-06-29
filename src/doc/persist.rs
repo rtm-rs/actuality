@@ -1,13 +1,15 @@
-use crate::doc::MyAggregate;
-use crate::persist::event_stream::ReplayStream;
+use async_trait::async_trait;
+use serde::{Deserialize, Serialize};
+use serde_json::Value;
+
+use crate::ReplayStream;
 use crate::persist::{
     PersistedEventRepository, PersistenceError, SerializedEvent, SerializedSnapshot, ViewContext,
     ViewRepository,
 };
 use crate::{Aggregate, EventEnvelope, View};
-use async_trait::async_trait;
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
+
+use crate::doc::setup::MyAggregate;
 
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct MyView;

@@ -17,7 +17,7 @@ use crate::DomainEvent;
 ///
 /// # Example of a 'Customer' aggregate
 /// ```rust
-/// # use actuality::doc::{CustomerEvent, CustomerError, CustomerCommand, CustomerService};
+/// # use actuality::doc::setup::{CustomerEvent, CustomerError, CustomerCommand, CustomerService};
 /// # use actuality::{Aggregate, AggregateError};
 /// # use serde::{Serialize,Deserialize};
 /// # use async_trait::async_trait;
@@ -89,7 +89,7 @@ pub trait Aggregate: Default + Serialize + DeserializeOwned + Sync + Send {
     /// # use std::sync::Arc;
     /// use actuality::{Aggregate, AggregateError};
     /// # use serde::{Serialize, Deserialize, de::DeserializeOwned};
-    /// # use actuality::doc::{CustomerCommand, CustomerError, CustomerEvent, CustomerService};
+    /// # use actuality::doc::setup::{CustomerCommand, CustomerError, CustomerEvent, CustomerService};
     /// # use async_trait::async_trait;
     /// #[derive(Default,Serialize,Deserialize)]
     /// # struct Customer {
@@ -141,7 +141,7 @@ pub trait Aggregate: Default + Serialize + DeserializeOwned + Sync + Send {
     /// ```rust
     /// # use std::sync::Arc;
     /// # use serde::{Serialize, Deserialize, de::DeserializeOwned};
-    /// # use actuality::doc::{CustomerCommand, CustomerError, CustomerEvent, CustomerService};
+    /// # use actuality::doc::setup::{CustomerCommand, CustomerError, CustomerEvent, CustomerService};
     /// use actuality::{Aggregate, AggregateError};
     /// use async_trait::async_trait;
     /// #[derive(Default,Serialize,Deserialize)]

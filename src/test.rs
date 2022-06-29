@@ -23,7 +23,7 @@ where
     /// Initiates an aggregate test with no previous events.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyService};
     /// use actuality::test::TestFramework;
     ///
     /// let executor = TestFramework::<MyAggregate>::with(MyService)
@@ -36,11 +36,11 @@ where
             service: self.service,
         }
     }
-    
+
     /// Initiates an aggregate test with a collection of previous events.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyEvents, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyEvents, MyService};
     /// use actuality::test::TestFramework;
     ///
     /// let executor = TestFramework::<MyAggregate>::with(MyService)
@@ -72,7 +72,7 @@ where
     /// to test against.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyService};
     /// use actuality::test::TestFramework;
     ///
     /// let executor = TestFramework::<MyAggregate>::with(MyService)
@@ -111,7 +111,7 @@ impl<A: Aggregate> AggregateResultValidator<A> {
     /// Verifies that the expected events have been produced by the command.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyEvents, MyService};
     /// # async fn test() {
     /// use actuality::test::TestFramework;
     ///
@@ -136,7 +136,7 @@ impl<A: Aggregate> AggregateResultValidator<A> {
     /// further validation.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyEvents, MyService};
     /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)
@@ -157,7 +157,7 @@ impl<A: Aggregate> AggregateResultValidator<A> {
     /// Returns the internal error payload for validation by the user.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
     /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)
@@ -181,7 +181,7 @@ where
     /// > Note that the configured Error *must* implement `std::cmp::PartialEq`.
     ///
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
+    /// # use actuality::doc::setup::{MyAggregate, MyCommands, MyEvents, MyService, MyUserError};
     /// use actuality::test::TestFramework;
     ///
     /// let validator = TestFramework::<MyAggregate>::with(MyService)

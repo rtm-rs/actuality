@@ -6,7 +6,7 @@ use crate::{Aggregate, AggregateError, EventEnvelope, Query};
 /// A utility for replaying committed events to a `Query`.
 ///
 /// ```rust
-/// use actuality::doc::{MyAggregate, MyQuery, MyRepository};
+/// use actuality::doc::setup::{MyAggregate, MyQuery, MyRepository};
 /// use actuality::persist::QueryReplay;
 ///
 /// fn update(repo: MyRepository, query: MyQuery) {
@@ -47,7 +47,7 @@ where
     ///
     /// _Example: An error handler that panics on any error._
     /// ```
-    /// # use actuality::doc::{MyAggregate, MyQuery, MyRepository};
+    /// # use actuality::doc::setup::{MyAggregate, MyQuery, MyRepository};
     /// # use actuality::persist::{GenericQuery, QueryReplay, ReplayStream};
     /// # fn config(mut replay: QueryReplay<MyRepository,MyQuery,MyAggregate>) {
     /// replay.use_error_handler(Box::new(|e|panic!("{}",e)));

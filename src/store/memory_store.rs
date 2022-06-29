@@ -14,7 +14,7 @@ use crate::{Aggregate, AggregateContext, AggregateError, store::EventStore};
 ///
 /// Creation and use in a constructing a `Cqrs`:
 /// ```rust
-/// # use actuality::doc::{MyAggregate, MyService};
+/// # use actuality::doc::setup::{MyAggregate, MyService};
 /// use actuality::Cqrs;
 /// use actuality::MemoryStore;
 ///
@@ -41,7 +41,7 @@ impl<A: Aggregate> MemoryStore<A> {
     /// Example of reading and displaying stored events:
     ///
     /// ```rust
-    /// # use actuality::doc::MyAggregate;
+    /// # use actuality::doc::setup::MyAggregate;
     /// # use actuality::EventEnvelope;
     /// # use actuality::MemoryStore;
     /// let store = MemoryStore::<MyAggregate>::default();
